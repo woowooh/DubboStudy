@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class HelloController {
     static final String template = "%s";
-    @Reference(version = "${demo.service.version}", check=false)
+    @Reference
     IGreetingService greetingService;
 
     @RequestMapping(value ="/hello/{message}", method = RequestMethod.GET)
