@@ -27,10 +27,8 @@ public class RedisLib {
      * @param expireTime 超期时间
      * @return 是否获取成功
      */
-    public boolean tryGetDistributedLock(String lockKey, String requestId, int expireTime) {
-        Jedis jedis = getJedis();
+    public boolean tryGetDistributedLock(Jedis jedis, String lockKey, String requestId, int expireTime) {
         String result = jedis.set(lockKey, requestId, SET_IF_NOT_EXIST, SET_WITH_EXPIRE_TIME, expireTime);
-        release(jedis);
         return LOCK_SUCCESS.equals(result);
     }
 

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class HelloController {
     static final String template = "%s";
-    @Reference
+    @Reference(loadbalance="roundrobin")
     IGreetingService greetingService;
 
     @RequestMapping(value ="/hello/{message}", method = RequestMethod.GET)
